@@ -52,6 +52,7 @@ const Container = styled.div`
   @media only screen and (max-width: 400px) {
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(1, 1fr);
+    padding: 0 2rem;
   }
 `;
 
@@ -71,13 +72,19 @@ const HeroSection = styled.div`
     animation: 4s ${goldeneye} ease-in-out infinite;
   }
   h1 {
-    font-size: 2.5rem;
+    font-size: 3em;
     text-transform: uppercase;
     transform: rotate(8deg);
     transition: 1s;
   }
   h1:hover {
     transform: rotate(-5deg);
+  }
+  @media only screen and (max-width: 400px) {
+    h1 {
+      font-size: 2rem;
+    }
+    padding: 9rem 0 0 0;
   }
 `;
 
@@ -89,6 +96,9 @@ const DirectionLine = styled.div`
   position: relative;
   left: 50%;
   top: 0;
+  @media only screen and (max-width: 400px) {
+    display: none;
+  }
 `;
 
 const TextRow = styled.div`
@@ -177,13 +187,27 @@ const DeskImages = styled.img`
   :hover {
     transform: translate(0px, 30px) scale(1.5);
   }
+  @media only screen and (max-width: 500px) {
+    max-width: 125px;
+  }
 `;
 
 const FinalQuestion = styled.div`
   grid-row: 14/ 16;
+  grid-column: 1/ -1;
+  display: flex;
+  align-items: center;w
+  flex-flow: column;
   p {
     opacity: 0.1;
     color: black;
+  }
+  @media only screen and (max-width: 500px) {
+    p {
+      opacity: 1;
+      color: red;
+      font-size: 2px;
+    }
   }
 `;
 const Challenge = () => {
@@ -366,7 +390,7 @@ const Challenge = () => {
           </AnswerColumn>
         </AnswerRow>
       </QuestionFourContainer>
-      <FinalQuestion style={{ display: !questionFour ? "none" : "block" }}>
+      <FinalQuestion style={{ display: !questionFour ? "none" : "flex" }}>
         <p>You found your last clue!</p>
       </FinalQuestion>
     </Container>
