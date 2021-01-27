@@ -177,6 +177,14 @@ const DeskImages = styled.img`
     transform: translate(0px, 30px) scale(1.5);
   }
 `;
+
+const FinalQuestion = styled.div`
+  grid-row: 14/ 16;
+  p {
+    opacity: 0.1;
+    color: black;
+  }
+`;
 const Challenge = () => {
   const [questionOne, setQuestionOne] = useState(false);
   const [questionTwo, setQuestionTwo] = useState(false);
@@ -235,8 +243,8 @@ const Challenge = () => {
         <TextRow>
           <h3>
             {questionTwo
-              ? "You are corect!"
-              : "Who is the only crew member to?"}
+              ? "You are correct! (COVID cancelled our team trip to the baseball game.)"
+              : "Which of these is false?"}
           </h3>
         </TextRow>
         <AnswerRow>
@@ -244,22 +252,25 @@ const Challenge = () => {
             onClick={() => answerFunction(false, 2)}
             style={{ opacity: questionTwo ? 0.2 : 1 }}
           >
-            <h4>Answer something here</h4>
+            <h4>At least one dog has pooped in the office</h4>
           </AnswerColumn>
           <AnswerColumn
             onClick={() => answerFunction(false, 2)}
             style={{ opacity: questionTwo ? 0.2 : 1 }}
           >
-            <h4>Answer something here</h4>
+            <h4>
+              Geoff was the first person to knock down the walls to expand the
+              VSSL office
+            </h4>
           </AnswerColumn>
           <AnswerColumn
             onClick={() => answerFunction(false, 2)}
             style={{ opacity: questionTwo ? 0.2 : 1 }}
           >
-            <h4>Answer something here</h4>
+            <h4>The VSSL office has two decks at it's office</h4>
           </AnswerColumn>
           <AnswerColumn onClick={() => answerFunction(true, 2)}>
-            <h4>Answer something here</h4>
+            <h4>VSSL once had a shout out at a Padre's game</h4>
           </AnswerColumn>
         </AnswerRow>
       </QuestionTwoContainer>
@@ -269,7 +280,7 @@ const Challenge = () => {
         <TextRow>
           <h3>
             {questionThree
-              ? "Well done!"
+              ? "const answer = true"
               : "What does the following code output to the console?"}
           </h3>
           <CodeColumn style={{ opacity: questionThree ? 0.2 : 1 }}>
@@ -314,7 +325,7 @@ const Challenge = () => {
         <TextRow>
           <h3>
             {questionFour
-              ? "Well done!"
+              ? "Your final clue is around here somewhere..."
               : "What is the difference between Let and Const?"}
           </h3>
         </TextRow>
@@ -354,6 +365,9 @@ const Challenge = () => {
           </AnswerColumn>
         </AnswerRow>
       </QuestionFourContainer>
+      <FinalQuestion style={{ display: !questionFour ? "none" : "block" }}>
+        <p>You found your last clue!</p>
+      </FinalQuestion>
     </Container>
   );
 };
