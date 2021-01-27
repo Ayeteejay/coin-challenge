@@ -49,8 +49,9 @@ const Container = styled.div`
     font-size: 2rem;
     font-weight: 200;
   }
-  @media only screen and (max-width: 500px) {
-    grid-template-columns: repeat(3, 1fr);
+  @media only screen and (max-width: 400px) {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
   }
 `;
 
