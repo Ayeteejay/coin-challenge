@@ -49,6 +49,9 @@ const Container = styled.div`
     font-size: 2rem;
     font-weight: 200;
   }
+  h4 {
+    line-height: 1.5rem;
+  }
   @media only screen and (max-width: 400px) {
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(1, 1fr);
@@ -136,6 +139,9 @@ const AnswerColumn = styled.div`
   padding: 2rem;
   cursor: pointer;
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: 0.5s;
   :hover {
     transform: translate(0px, -20px);
@@ -144,6 +150,7 @@ const AnswerColumn = styled.div`
   }
   p {
     text-align: left;
+    line-height: 1.5rem;
   }
 `;
 
@@ -198,14 +205,13 @@ const FinalQuestion = styled.div`
   display: flex;
   align-items: center;w
   flex-flow: column;
-  p {
+  a {
     opacity: 0.1;
     color: black;
   }
   @media only screen and (max-width: 500px) {
-    p {
+    a {
       opacity: 1;
-      color: red;
       font-size: 2px;
     }
   }
@@ -216,16 +222,21 @@ const Challenge = () => {
   const [questionThree, setQuestionThree] = useState(false);
   const [questionFour, setQuestionFour] = useState(false);
   const answerFunction = (answer, questionNumber) => {
-    if (answer) {
-      if (questionNumber === 1) {
+    switch (answer) {
+      case questionNumber === 1:
         setQuestionOne(() => true);
-      } else if (questionNumber === 2) {
+        break;
+      case questionNumber === 2:
         setQuestionTwo(() => true);
-      } else if (questionNumber === 3) {
+        break;
+      case questionNumber === 3:
         setQuestionThree(() => true);
-      } else if (questionNumber === 4) {
+        break;
+      case questionNumber === 4:
         setQuestionFour(() => true);
-      }
+        break;
+      default:
+        console.log("Bogus! Some kind of error happened.");
     }
   };
   return (
@@ -391,7 +402,13 @@ const Challenge = () => {
         </AnswerRow>
       </QuestionFourContainer>
       <FinalQuestion style={{ display: !questionFour ? "none" : "flex" }}>
-        <p>You found your last clue!</p>
+        <a
+          href="https://vssl-agency@bitbucket.org/vssl-agency/coin.git"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          https://vssl-agency@bitbucket.org/vssl-agency/coin.git
+        </a>
       </FinalQuestion>
     </Container>
   );
